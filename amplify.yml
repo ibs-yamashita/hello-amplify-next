@@ -1,5 +1,4 @@
-# amplify.yml：Next.js 用のシンプルな設定
-# Next.js の SSR（サーバー機能）を Amplify に自動認識させる
+# amplify.yml：Next.js（SSR）用の正しい設定
 version: 1
 frontend:
   phases:
@@ -11,9 +10,7 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    # .next ではなく、リポジトリのルート（プロジェクト直下）を指定する
-    # Amplify が Next.js の SSR 構成を自動的に読み取ってくれる
-    baseDirectory: .
+    baseDirectory: .next   # ← Next.js SSRアプリは必ずこれにする（公式ドキュメントで確認済み）
     files:
       - "**/*"
   cache:
